@@ -1,5 +1,5 @@
 DateTime==4.3
-Flask==1.1.1]
+Flask==1.1.1
 flask-paginate==0.5.5
 gunicorn==18.0
 itsdangerous==1.1.0
