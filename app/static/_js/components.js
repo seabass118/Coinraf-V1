@@ -100,7 +100,7 @@ class MobileMenu extends HTMLElement {
                     width: 100vw;
                     height: 100vh;
                     background-color: var(--bkg-color);
-                    position: absolute;
+                    position: fixed;
                     z-index: 4;
                     left: -500px;
                 }
