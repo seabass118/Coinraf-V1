@@ -29,7 +29,8 @@ for (i = 0; i < acc.length; i++) {
 
 //Color Mode
 
-const btn = document.querySelector(".color_mode");
+const btn_desktop = document.querySelector(".color_mode_desktop");
+const btn_mobile = document.querySelector(".color_mode_mobile");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 const currentTheme = localStorage.getItem("theme");
 
@@ -39,7 +40,22 @@ if (currentTheme == "dark") {
     document.body.classList.toggle("light-theme");
 }
 
-btn.addEventListener("click", function () {
+btn_desktop.addEventListener("click", function () {
+    if (prefersDarkScheme.matches) {
+        document.body.classList.toggle("light-theme");
+        var theme = document.body.classList.contains("light-theme")
+            ? "light"
+            : "dark";
+    } else {
+        document.body.classList.toggle("dark-theme");
+        var theme = document.body.classList.contains("dark-theme")
+            ? "dark"
+            : "light";
+    }
+    localStorage.setItem("theme", theme);
+});
+
+btn_mobile.addEventListener("click", function () {
     if (prefersDarkScheme.matches) {
         document.body.classList.toggle("light-theme");
         var theme = document.body.classList.contains("light-theme")

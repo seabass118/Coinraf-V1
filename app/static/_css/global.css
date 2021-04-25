@@ -18,12 +18,14 @@ body {
     --text-color: #000;
     --bkg-color: #fff;
     --mint: rgb(0, 255, 145);
+    --mode-text: "Switch to Dark Mode";
 }
 
 body.dark-theme {
     --text-color: #fff;
     --bkg-color: #0a1c2c;
     --mint: rgb(0, 255, 145);
+    --mode-text: "Switch to Light Mode";
 }
   
 @media (prefers-color-scheme: dark) {
@@ -32,12 +34,14 @@ body.dark-theme {
         --text-color: #fff;
         --bkg-color: #0a1c2c;
         --mint: rgb(0, 255, 145);
+        --mode-text: "Switch to Light Mode";
     }
 
     body.light-theme {
         --text-color: #000;
         --bkg-color: #fff;
         --mint: rgb(0, 255, 145);
+        --mode-text: "Switch to Dark Mode";
     }
 
 }
@@ -92,7 +96,7 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-.color_mode {
+.color_mode_desktop {
     right: 21px;
     position: absolute;
     filter: invert(74%) sepia(46%) saturate(2241%) hue-rotate(98deg) brightness(101%) contrast(108%);
@@ -122,7 +126,7 @@ body {
         display: none;
     }
 
-    .color_mode {
+    .color_mode_desktop {
         display: none;
     }
 

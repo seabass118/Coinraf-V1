@@ -74,7 +74,7 @@ class Header extends HTMLElement {
                             </li>
                         </ul>
                     </div>
-                    <div class="color_mode">
+                    <div class="color_mode_desktop">
                         <img src='/static/_images/_icons/moon.svg' style='width: 25px; height: 25px;'>
                     </div>
                     <div id="menu_icon" onclick='showMenu()'>
@@ -188,6 +188,33 @@ class MobileMenu extends HTMLElement {
                   .m_list_item {
                     padding-bottom: 10px;
                   }
+
+                  .m_item {
+                    cursor: pointer;
+                    padding: 18px;
+                    width: calc(100% - 36px);
+                    text-align: left;
+                    background-color: var(--bkg-color);
+                    color: var(--text-color);
+                    font-size: 15px;
+                  }
+
+                  #color_mode_span {
+                      padding-right: 15px;
+                  }
+
+                  #color_mode_span span {
+                      display: none;
+                  }
+
+                  .color_mode_mobile {
+                    filter: invert(74%) sepia(46%) saturate(2241%) hue-rotate(98deg) brightness(101%) contrast(108%);
+                  }
+
+                  #color_mode_span:after {
+                    content: var(--mode-text);
+                    color: #000;
+                  }
                 
 
             </style>
@@ -233,6 +260,14 @@ class MobileMenu extends HTMLElement {
                             </a>
                         </ul>
                     </div>
+
+                    <div class="m_item">
+                        <div class="color_mode_mobile flex-center-vertical">
+                            <div id='color_mode_span'></div><img src='/static/_images/_icons/moon.svg' style='width: 25px; height: 25px;'>
+                        </div>
+                    </div>
+                    
+
                 </div>
                 
         `;
