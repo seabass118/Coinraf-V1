@@ -9,3 +9,4 @@ urllib3==1.25.11
 virtualenv==20.4.3
 virtualenv-clone==0.5.4
 Werkzeug==1.0.0
+orjson==3.5.2
