@@ -1,10 +1,10 @@
-from flask import Flask, render_template
-from data import DataLists
- 
+from flask import Flask, render_template, request
+from data import DataPull, DataLists, coin_output
+
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
- 
+
 
 @app.route('/')
 def index():
@@ -24,4 +24,5 @@ def exchanges():
 @app.route('/discover')
 def data():
   return render_template('discover.html')
-  
+       
+       
