@@ -63,12 +63,17 @@ class Header extends HTMLElement {
                                 </a>
                             </li>
                             <li class='nav_item'>
-                                <a id="nav_2" href='/exchanges'>
+                                <a id="nav_2" href='/bsc'>
+                                    BSC
+                                </a>
+                            </li>
+                            <li class='nav_item'>
+                                <a id="nav_3" href='/exchanges'>
                                     Exchanges
                                 </a>
                             </li>
                             <li class='nav_item'>
-                                <a id="nav_3" href='/discover'>
+                                <a id="nav_4" href='/discover'>
                                     Discover
                                 </a>
                             </li>
@@ -247,6 +252,15 @@ class MobileMenu extends HTMLElement {
                     <div class="m_sub">
                         <ul class='m_list'>
                             <a href="/crypto">
+                                <li class='m_list_item'>View all</li>
+                            </a>
+                        </ul>
+                    </div>
+
+                    <button class="m_dropdown">BSC</button>
+                    <div class="m_sub">
+                        <ul class='m_list'>
+                            <a href="/bsc">
                                 <li class='m_list_item'>View all</li>
                             </a>
                         </ul>

@@ -69,3 +69,7 @@ btn_mobile.addEventListener("click", function () {
     }
     localStorage.setItem("theme", theme);
 });
+
+
+//Image Slider
+
