@@ -16,7 +16,7 @@
 }
 
 .h_headline_text {
-    font-size: 30px;
+	font-size: 7vw;
 }
 
 .desktop_headline {
@@ -27,19 +27,19 @@
     display: block;
 }
 
-#ad_banner_1 {
+#hh_banner_1 {
     margin-right: 0px;
-    width: 300px;
+    width: 60vw;
 }
 
-#ad_banner_2 {
+#hh_banner_2 {
     margin-left: 0px;
-    width: 300px;
+    width: 60vw;
 }
 
 #slider {
 	position: relative;
-	width: 450px;
+	width: 100vw;
 	overflow: hidden;
 }
 
@@ -120,6 +120,16 @@ ul#move li img {
 }
 
 @media only screen and (min-width: 1150px) {
+	#hh_banner_1 {
+        margin-right: 60px;
+		width: 300px;
+    }
+
+    #hh_banner_2 {
+        margin-left: 60px;
+		width: 300px;
+    }
+
     .desktop_headline {
         display: block;
     }
@@ -127,13 +137,20 @@ ul#move li img {
     .mobile_headline {
         display: none;
     }
+    
+}
 
-    #ad_banner_1 {
-        margin-right: 60px;
+@media only screen and (min-width: 550px) {
+	.h_headline_text {
+		font-size: 30px;
+	}
+
+	#hh_banner_1 {
+		width: 300px;
     }
 
-    #ad_banner_2 {
-        margin-left: 60px;
+    #hh_banner_2 {
+		width: 300px;
     }
 }
 
