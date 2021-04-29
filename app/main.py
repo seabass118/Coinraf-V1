@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request
-from data import DataPull, DataLists, coin_output
-
+from data import DataPull, DataLists
+import orjson
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-@app.route('/')
+@app.route('/_ss_search', methods= ['GET',  'POST'])
+def search():
+    return orjson.dumps(DataPull.coin_output)
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
   return render_template('index.html', list_length=DataLists.list_length);
 

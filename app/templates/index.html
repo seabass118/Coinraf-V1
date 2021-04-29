@@ -9,6 +9,16 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='_css/index.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='_css/global.css') }}">
     <script src="{{ url_for('static',filename='_js/components.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='_js/jquery.min.js') }}" type="text/javascript"></script>
+    <style>
+
+        #result li {
+            display: none;
+          }
+        #result li:nth-child(-n+5){
+            display: list-item;
+        }
+    </style>
 </head>
 <body>
     <g-mobile-menu></g-mobile-menu>
@@ -34,83 +44,80 @@
                     </div>
                 </div>
 
-                    <div class="mobile_headline">
-                        <div id="line"></div>
-                        <div id="banner_slider" class="center_center">
-                            <div id="slider">
-                                <ul id="move">
-                                    <li>
-                                        <div id="hh_banner_1"  class="h_headline_cont text_cont">
-                                            <div class="h_headline_text">
-                                                Placeholder #1
-                                            </div>
+                <div class="mobile_headline">
+                    <div id="line"></div>
+                    <div id="banner_slider" class="center_center">
+                        <div id="slider">
+                            <ul id="move">
+                                <li>
+                                    <div id="hh_banner_1"  class="h_headline_cont text_cont">
+                                        <div class="h_headline_text">
+                                            Placeholder #1
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div class="h_headline_cont text_cont">
-                                            <div class="h_headline_text">
-                                                Discover <b style="color: rgba(0, 255, 145, 1);">{{ list_length }}</b> coins
-                                            </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="h_headline_cont text_cont">
+                                        <div class="h_headline_text">
+                                            Discover <b style="color: rgba(0, 255, 145, 1);">{{ list_length }}</b> coins
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div id="hh_banner_2"  class="h_headline_cont text_cont">
-                                            <div class="h_headline_text">
-                                                Placeholder #2
-                                            </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div id="hh_banner_2"  class="h_headline_cont text_cont">
+                                        <div class="h_headline_text">
+                                            Placeholder #2
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                </div>
+
+                <input type="text" name="search" id="search" placeholder="Search Employee Details" class="form-control" />
+                <ul class="list-group" id="result"></ul>
+
             </div>
-
-
-
         </div>
     </div>
     <script src="{{ url_for('static',filename='_js/main.js') }}" type="text/javascript"></script>
-    <script>
-        window.onload = function() {
+    <script type="text/javascript">
 
-            let slider = document.querySelector('#slider');
-            let moveLi = Array.from(document.querySelectorAll('#slider #move li'));
-            let counter = 1;
-            let time = 5000;
-            let line = document.querySelector('#line');
-        
-            line.style.animation = 'line ' + (time / 1000) + 's linear infinite';
-        
-            function moveUP() {
-        
-                if (counter == moveLi.length) {
-        
-                    moveLi[0].style.marginLeft = '0%';
-                    counter = 1;
-        
-                } else if (counter >= 1) {
-        
-                    moveLi[0].style.marginLeft = '-' + counter * 100 + '%';
-                    counter++;
-                } 
-        
-            }
-        
-            let autoPlay = setInterval(moveUP, time);
-        
-            slider.onmouseover = function() {
-                autoPlay = clearInterval(autoPlay);
-                line.style.animation = '';
-            }
-        
-            slider.onmouseout = function() {
-                autoPlay = setInterval(moveUP, time);
-                line.style.animation = 'line ' + (time / 1000) + 's linear infinite';
-            }
-          
-        }
+    $SCRIPT_ROOT = {{ request.script_root | tojson | safe }};
+
+    $(document).ready(function(){
+        $.ajaxSetup({ cache: false });
+            $('#search').keyup(function(){
+                let search_value = $(this).val();
+                $('#result').html('');
+                $('#state').val('');
+                var searchField = $('#search').val();
+                var expression = new RegExp(searchField, "i");
+                
+                if(search_value != ""){
+                    $.getJSON($SCRIPT_ROOT + "/_ss_search", function(data) {
+                        var maxAppend = 0;
+                        $.each(data, function(key, value){
+                            if (value.name.search(expression) != -1 || value.id.search(expression) != -1) {
+                                if (maxAppend >= 5) return;
+                                var appendElement = $('<li class="list-group-item link-class"><img src="'+value.logo_url+'" height="40" width="40" class="img-thumbnail" /> '+value.name+' | <span class="text-muted">'+value.id+'</span></li>');
+                                maxAppend++;
+                                $("#result").append(appendElement);
+                            }
+                        });   
+                    });
+                } else {
+                    $("#result").html("");
+                }
+            });
+    });
+    
+
+    
+
+
     </script>
 </body>
 </html>
