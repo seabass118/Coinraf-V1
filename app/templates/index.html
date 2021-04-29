@@ -102,7 +102,7 @@
                         $.each(data, function(key, value){
                             if (value.name.search(expression) != -1 || value.id.search(expression) != -1) {
                                 if (maxAppend >= 5) return;
-                                var appendElement = $('<li class="list-group-item link-class"><img src="'+value.logo_url+'" height="40" width="40" class="img-thumbnail" /> '+value.name+' | <span class="text-muted">'+value.id+'</span></li>');
+                                var appendElement = $('<li class="list-group-item link-class">'+value.name+' | <span class="text-muted">'+value.id+'</span></li>');
                                 maxAppend++;
                                 $("#result").append(appendElement);
                             }
