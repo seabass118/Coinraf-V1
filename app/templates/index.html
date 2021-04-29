@@ -89,7 +89,7 @@
 
     $(document).ready(function(){
         $.ajaxSetup({ cache: false });
-            $('#search').keyup(function(){
+            $('#search').keydown(function(){
                 let search_value = $(this).val();
                 $('#result').html('');
                 $('#state').val('');
