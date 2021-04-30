@@ -1,0 +1,6 @@
+$.each(data, function(key, value){
+        if (maxAppend >= 5) return;
+        var appendElement = '<div class="ss_item" style='display: block;'>'+value.name+' | <span class="text-muted">'+value.id+'</span></div>';
+        maxAppend++;
+        $("#ss_dropdown").html(appendElement);
+});   

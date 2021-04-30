@@ -5,9 +5,22 @@ import orjson
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-@app.route('/_ss_search', methods= ['GET',  'POST'])
+@app.route("/ss_search", methods=['GET', 'POST'])
 def search():
-    return orjson.dumps(DataPull.coin_output)
+    input_text = request.args['searchText']
+    coins = []
+    counter = 0
+    for i in DataPull.coin_output:
+        if str(input_text).lower() in i['id'].lower() or str(input_text).lower() in i['name'].lower():
+            counter += 1
+            coins.append([i['id'],i['name']])
+            if counter == 5:
+                break
+            
+    return_coins = []
+    for i in coins:
+        return_coins.append({'id':i[0], 'name':i[1]})
+    return orjson.dumps(return_coins)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

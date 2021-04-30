@@ -10,15 +10,6 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='_css/global.css') }}">
     <script src="{{ url_for('static',filename='_js/components.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static',filename='_js/jquery.min.js') }}" type="text/javascript"></script>
-    <style>
-
-        #result li {
-            display: none;
-          }
-        #result li:nth-child(-n+5){
-            display: list-item;
-        }
-    </style>
 </head>
 <body>
     <g-mobile-menu></g-mobile-menu>
@@ -76,8 +67,11 @@
                 </div>
                 </div>
 
-                <input type="text" name="search" id="search" placeholder="Search Employee Details" class="form-control" />
-                <ul class="list-group" id="result"></ul>
+                <div id="ss_container">
+                    <input id="ss_input" type="text" onkeyup="coinSearch(this.value)" placeholder="Search...">
+                    <br>
+                    <div id="ss_dropdown"></div>
+                  </div>
 
             </div>
         </div>
@@ -85,38 +79,27 @@
     <script src="{{ url_for('static',filename='_js/main.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
 
-    $SCRIPT_ROOT = {{ request.script_root | tojson | safe }};
-
-    $(document).ready(function(){
-        $.ajaxSetup({ cache: false });
-            $('#search').keydown(function(){
-                let search_value = $(this).val();
-                $('#result').html('');
-                $('#state').val('');
-                var searchField = $('#search').val();
-                var expression = new RegExp(searchField, "i");
-                
-                if(search_value != ""){
-                    $.getJSON($SCRIPT_ROOT + "/_ss_search", function(data) {
-                        var maxAppend = 0;
-                        $.each(data, function(key, value){
-                            if (value.name.search(expression) != -1 || value.id.search(expression) != -1) {
-                                if (maxAppend >= 5) return;
-                                var appendElement = $('<li class="list-group-item link-class">'+value.name+' | <span class="text-muted">'+value.id+'</span></li>');
-                                maxAppend++;
-                                $("#result").append(appendElement);
-                            }
-                        });   
-                    });
-                } else {
-                    $("#result").html("");
-                }
-            });
-    });
-    
-
-    
-
+    function coinSearch(value) {
+        value = value.trim(); 
+        var searchField = $('#ss_input').val();
+        var expression = new RegExp(searchField, "i");
+        if(value != "") { 
+        $.ajax({
+            url: "ss_search",
+            data: {searchText: value},
+            dataType: "json",
+            success: function(data){
+                var res = ""
+                $.each(data, function(key, value){
+                    res += '<div class="ss_item" style="display: block;"> | <span class="text-muted">'+'id: '+value.id+'name: '+value.name+'</span></div>';
+                });
+                $("#ss_dropdown").html(res);
+            }
+        });
+        } else {
+            $("#ss_dropdown").html(""); 
+        }
+    }
 
     </script>
 </body>
