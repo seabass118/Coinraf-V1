@@ -111,3 +111,26 @@ window.onload = function() {
     }
   
 }
+
+
+//Search Function
+
+function coinSearch(value) {
+    value = value.trim(); 
+    if(value != "") { 
+    $.ajax({
+        url: "ss_search",
+        data: {searchText: value},
+        dataType: "json",
+        success: function(data){
+            var res = ""
+            $.each(data, function(key, value){
+                res += '<div class="ss_item" style="display: block;"><span class="ss_system_muted">'+'<img src='+value.logo_url+' style="width: 20px; height: 20px;">'+'  '+value.id+'  '+value.name+'</span></div>';
+            });
+            $("#ss_dropdown").html(res);
+        }
+    });
+    } else {
+        $("#ss_dropdown").html(""); 
+    }
+}

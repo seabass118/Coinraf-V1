@@ -77,30 +77,5 @@
         </div>
     </div>
     <script src="{{ url_for('static',filename='_js/main.js') }}" type="text/javascript"></script>
-    <script type="text/javascript">
-
-    function coinSearch(value) {
-        value = value.trim(); 
-        var searchField = $('#ss_input').val();
-        var expression = new RegExp(searchField, "i");
-        if(value != "") { 
-        $.ajax({
-            url: "ss_search",
-            data: {searchText: value},
-            dataType: "json",
-            success: function(data){
-                var res = ""
-                $.each(data, function(key, value){
-                    res += '<div class="ss_item" style="display: block;"> | <span class="text-muted">'+'id: '+value.id+'name: '+value.name+'</span></div>';
-                });
-                $("#ss_dropdown").html(res);
-            }
-        });
-        } else {
-            $("#ss_dropdown").html(""); 
-        }
-    }
-
-    </script>
 </body>
 </html>
