@@ -10,6 +10,39 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='_css/global.css') }}">
     <script src="{{ url_for('static',filename='_js/components.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static',filename='_js/jquery.min.js') }}" type="text/javascript"></script>
+    <style>
+
+        .ss_container {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #ss_input {
+            height: 40px;
+            border: none;
+            width: calc(600px - 40px);
+            outline: none;
+            padding-left: 40px;
+            background-color: var(--bkg-color);
+            background: url(/static/_images/_icons/search_icon.png)no-repeat 10px;
+            color: var(--text-color);
+            border-radius: 10px;
+        }
+
+        #ss_dropdown {
+            padding-left: 20px;
+        }
+
+        .ss_wrapper {
+            width: auto;
+            border: 3px solid var(--mint);
+            border-radius: 10px;
+        }
+
+    </style>
 </head>
 <body>
     <g-mobile-menu></g-mobile-menu>
@@ -65,13 +98,15 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
 
-                <div id="ss_container">
-                    <input id="ss_input" type="text" onkeyup="coinSearch(this.value)" placeholder="Search...">
-                    <br>
-                    <div id="ss_dropdown"></div>
-                  </div>
+                <div class="ss_container">
+                    <div class="ss_wrapper">
+                        <input id="ss_input" type="text" onkeyup="coinSearch(this.value)" placeholder="Search...">
+                        <br>
+                        <div id="ss_dropdown"></div>
+                    </div>
+                </div>
 
             </div>
         </div>

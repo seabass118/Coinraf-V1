@@ -137,6 +137,14 @@ body {
     right: 21px;
 }
 
+#search_id_cont {
+    background-color: var(--mint);
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #000;
+}
+
 @media only screen and (max-width: 550px) {
     .nav_item {
         display: none;

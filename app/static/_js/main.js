@@ -123,9 +123,9 @@ function coinSearch(value) {
         data: {searchText: value},
         dataType: "json",
         success: function(data){
-            var res = ""
+            let res = ""
             $.each(data, function(key, value){
-                res += '<div class="ss_item" style="display: block;"><span class="ss_system_muted">'+'<img src='+value.logo_url+' style="width: 20px; height: 20px;">'+'  '+value.id+'  '+value.name+'</span></div>';
+                res += '<div class="ss_item flex-center-vertical" style="height: 40px;"><span class="ss_system_muted flex-center-vertical">'+'<img src='+value.logo_url+' style="width: 20px; height: 20px; padding-right: 10px;">'+'<div style="padding-right: 10px;">'+value.name+'</div>'+'</span>'+'<div id="search_id_cont" class="text_cont">'+value.id+'</div>'+'<div class="search_rank" class="text_cont">'+'#'+value.rank+'</div>'+'</div>';
             });
             $("#ss_dropdown").html(res);
         }
