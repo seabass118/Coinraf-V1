@@ -345,7 +345,7 @@ class HomeSearchbar extends HTMLElement {
             #ss_input {
                 height: 40px;
                 border: none;
-                width: auto;
+                width: 85%;
                 outline: none;
                 padding-left: 40px;
                 background-color: var(--bkg-color);

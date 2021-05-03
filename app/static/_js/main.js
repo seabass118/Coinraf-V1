@@ -79,9 +79,6 @@ window.onload = function() {
     let moveLi = Array.from(document.querySelectorAll('#slider #move li'));
     let counter = 1;
     let time = 5000;
-    let line = document.querySelector('#line');
-
-    line.style.animation = 'line ' + (time / 1000) + 's linear infinite';
 
     function moveUP() {
 
@@ -102,12 +99,10 @@ window.onload = function() {
 
     slider.onmouseover = function() {
         autoPlay = clearInterval(autoPlay);
-        line.style.animation = '';
     }
 
     slider.onmouseout = function() {
         autoPlay = setInterval(moveUP, time);
-        line.style.animation = 'line ' + (time / 1000) + 's linear infinite';
     }
   
 }
