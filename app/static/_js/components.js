@@ -288,3 +288,111 @@ class MobileMenu extends HTMLElement {
   }
 
 customElements.define('g-mobile-menu', MobileMenu);
+
+class HomeSearchbar extends HTMLElement {
+    constructor() {
+      super();
+    }
+    connectedCallback() {
+        this.innerHTML = `
+            <style>
+
+            #search_id_cont {
+                background-color: var(--mint);
+                padding: 1px 5px;
+                border-radius: 4px;
+                font-weight: 600;
+                color: #000;
+            }
+            
+            .search_rank {
+                margin-left: auto;
+                margin-right: 10px;
+                background-color: #cfcfcf;
+                padding: 1px 4px;
+                color: #000;
+                font-weight: 600;
+                border-radius: 4px;
+            }
+            
+            .ss_item:hover {
+                opacity:  0.8;
+                cursor: pointer;
+            }
+            
+            #ss_input::placeholder {     /* Firefox */
+                color: var(--text-color);
+                opacity: 1; 
+            }
+              
+            #ss_input :-ms-input-placeholder {      /* Internet Explorer 10-11 */
+                color: var(--text-color);
+            }
+            
+            #ss_input::-ms-input-placeholder {       /* Microsoft Edge */
+                color: var(--text-color);
+            }
+
+            .ss_container {
+                width: 100%;
+                height: auto;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+    
+            #ss_input {
+                height: 40px;
+                border: none;
+                width: auto;
+                outline: none;
+                padding-left: 40px;
+                background-color: var(--bkg-color);
+                background: url(/static/_images/_icons/search_icon.png)no-repeat 10px;
+                color: var(--text-color);
+                border-radius: 10px;
+            }
+    
+            #ss_dropdown {
+                padding-left: 20px;
+            }
+    
+            .ss_wrapper {
+                width: 85%;
+                border: 3px solid var(--mint);
+                border-radius: 10px;
+            }
+    
+            .ss_item {
+                font-size: 3vw;
+            }
+    
+            @media only screen and (min-width: 650px) {
+                .ss_item {
+                    font-size: 16px;
+                }
+    
+                #ss_input {
+                    width: calc(600px - 40px);
+                }
+            
+                .ss_wrapper {
+                    width: auto;
+                }
+            }
+
+            </style>
+
+            <div class="ss_container">
+                <div class="ss_wrapper">
+                    <input id="ss_input" type="text" onkeyup="coinSearch(this.value)" placeholder="Search...">
+                    <br>
+                    <div id="ss_dropdown"></div>
+                </div>
+            </div>
+
+        `;
+      }
+  }
+
+customElements.define('h-searchbar', HomeSearchbar);
