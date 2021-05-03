@@ -13,7 +13,10 @@ def search():
     for i in DataPull.coin_output:
         if str(input_text).lower() in i['id'].lower() or str(input_text).lower() in i['name'].lower():
             counter += 1
-            coins.append([i['id'],i['name'],i['logo_url'],i['rank']])
+            if i['logo_url'] != "":
+              coins.append([i['id'],i['name'],i['logo_url'],i['rank']])
+            else:
+              coins.append([i['id'],i['name'],"/static/_images/_icons/pc_icon.png",i['rank']])
             if counter == 5:
                 break
     return_coins = []

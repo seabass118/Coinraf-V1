@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>COINRAF - HOME</title>
+    <title>Coinraf</title>
     <link rel="shortcut icon" type="image/jpg" href="{{ url_for('static',filename='_images/_icons/ficon.png') }}"/>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='_css/index.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='_css/global.css') }}">
@@ -23,7 +23,7 @@
         #ss_input {
             height: 40px;
             border: none;
-            width: calc(600px - 40px);
+            width: auto;
             outline: none;
             padding-left: 40px;
             background-color: var(--bkg-color);
@@ -37,9 +37,19 @@
         }
 
         .ss_wrapper {
-            width: auto;
+            width: 85%;
             border: 3px solid var(--mint);
             border-radius: 10px;
+        }
+
+        @media only screen and (min-width: 650px) {
+            #ss_input {
+                width: calc(600px - 40px);
+            }
+        
+            .ss_wrapper {
+                width: auto;
+            }
         }
 
     </style>
