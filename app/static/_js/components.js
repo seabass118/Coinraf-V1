@@ -103,6 +103,7 @@ class MobileMenu extends HTMLElement {
 
                 #m_container {
                     height: 100vh;
+                    width: 100%;
                     background-color: var(--bkg-color);
                     position: fixed;
                     z-index: 4;
