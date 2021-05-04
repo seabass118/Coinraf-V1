@@ -113,6 +113,7 @@ window.onload = function() {
 function coinSearch(value) {
     value = value.trim(); 
     if(value != "") { 
+    $.ajaxSetup({ cache: false });
     $.ajax({
         url: "ss_search",
         data: {searchText: value},
