@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
 from data import DataPull, DataLists
+from flask_paginate import Pagination, get_page_args
 import orjson
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 @app.route("/ss_search", methods=['GET', 'POST'])
 def search():
@@ -24,9 +26,30 @@ def search():
         return_coins.append({'id':i[0], 'name':i[1], 'logo_url':i[2], 'rank':i[3]})
     return orjson.dumps(return_coins)
 
-@app.route('/', methods=['GET', 'POST'])
+
+def get_coins(page, offset=0, per_page=50):
+    offset = ((page - 1) * per_page)
+    return DataPull.coin_output[offset: offset + per_page]
+
+
+@app.template_filter()
+def format_currency(value):
+    return "${:,.2f}".format(value)
+
+
+@app.template_filter()
+def string_chop(value):
+    return value[:-3]
+
+
+@app.route('/')
 def index():
-  return render_template('index.html', list_length=DataLists.list_length);
+  page, per_page, offset = get_page_args(page_parameter='page',per_page_parameter='per_page')
+  total = len(DataPull.coin_output)
+  per_page = 50
+  pagination_coins = get_coins(page=page, offset=offset, per_page=per_page)
+  pagination = Pagination(page=page, per_page=per_page, total=total)
+  return render_template('index.html', list_length=DataLists.list_length, table_data=pagination_coins,page=page,per_page=per_page,pagination=pagination);
 
 
 @app.route('/crypto')

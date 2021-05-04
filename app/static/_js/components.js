@@ -317,8 +317,9 @@ class HomeSearchbar extends HTMLElement {
             }
             
             .ss_item:hover {
-                opacity:  0.8;
                 cursor: pointer;
+                margin-left: 15px;
+                color: #b5b5b5;
             }
             
             #ss_input::placeholder {     /* Firefox */
@@ -347,11 +348,18 @@ class HomeSearchbar extends HTMLElement {
                 border: none;
                 width: 85%;
                 outline: none;
-                padding-left: 40px;
+                padding-left: 20px;
                 background-color: var(--bkg-color);
-                background: url(/static/_images/_icons/search_icon.png)no-repeat 10px;
                 color: var(--text-color);
                 border-radius: 10px;
+            }
+
+            #searchbar_icon {
+                filter: invert(76%) sepia(74%) saturate(739%) hue-rotate(89deg) brightness(96%) contrast(113%);
+                position: relative;
+                top: 8px;
+                left: 8px;
+
             }
     
             #ss_dropdown {
@@ -366,7 +374,31 @@ class HomeSearchbar extends HTMLElement {
     
             .ss_item {
                 font-size: 3vw;
+                transition: 0.25s;
             }
+
+           
+
+            .slideInUp {
+                -webkit-animation-name: slideInUp;
+                animation-name: slideInUp;
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+              }
+
+            @keyframes slideInUp {
+                0% {
+                  -webkit-transform: translateY(100%);
+                  transform: translateY(100%);
+                  visibility: visible;
+                }
+                100% {
+                  -webkit-transform: translateY(0);
+                  transform: translateY(0);
+                }
+              } 
     
             @media only screen and (min-width: 650px) {
                 .ss_item {
@@ -374,7 +406,7 @@ class HomeSearchbar extends HTMLElement {
                 }
     
                 #ss_input {
-                    width: calc(600px - 40px);
+                    width: calc(600px - 20px);
                 }
             
                 .ss_wrapper {
@@ -382,11 +414,14 @@ class HomeSearchbar extends HTMLElement {
                 }
             }
 
+
+
             </style>
 
             <div class="ss_container">
                 <div class="ss_wrapper">
-                    <input id="ss_input" type="text" onkeyup="coinSearch(this.value)" placeholder="Search...">
+                    <img id="searchbar_icon" src="/static/_images/_icons/searchbar_icon.svg">
+                    <input id="ss_input" type="text" onkeyup="coinSearch(this.value)"  placeholder="Search...">
                     <br>
                     <div id="ss_dropdown"></div>
                 </div>
