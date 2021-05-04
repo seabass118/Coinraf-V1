@@ -59,7 +59,7 @@ class Header extends HTMLElement {
                         <ul>
                             <li class='nav_item'>
                                 <a id="nav_1" href='/crypto'>
-                                    Crypto
+                                    Prices
                                 </a>
                             </li>
                             <li class='nav_item'>
@@ -233,7 +233,7 @@ class MobileMenu extends HTMLElement {
                     </a>
                 </div>
                 <div class='m_dropdown_container'>
-                    <button class="m_dropdown">Cryptocurrency</button>
+                    <button class="m_dropdown">Cryptocurrency Prices</button>
                     <div class="m_sub">
                         <ul class='m_list'>
                             <a href="/crypto">
@@ -324,7 +324,7 @@ class HomeSearchbar extends HTMLElement {
             
             #ss_input::placeholder {     /* Firefox */
                 color: var(--text-color);
-                opacity: 1; 
+                opacity: 0.8; 
             }
               
             #ss_input :-ms-input-placeholder {      /* Internet Explorer 10-11 */
@@ -421,7 +421,7 @@ class HomeSearchbar extends HTMLElement {
             <div class="ss_container">
                 <div class="ss_wrapper">
                     <img id="searchbar_icon" src="/static/_images/_icons/searchbar_icon.svg">
-                    <input id="ss_input" type="text" onkeyup="coinSearch(this.value)"  placeholder="Search...">
+                    <input id="ss_input" type="text" onkeyup="coinSearch(this.value)"  placeholder="Search..." spellcheck="false">
                     <br>
                     <div id="ss_dropdown"></div>
                 </div>

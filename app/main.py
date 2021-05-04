@@ -15,10 +15,18 @@ def search():
     for i in DataPull.coin_output:
         if str(input_text).lower() in i['id'].lower() or str(input_text).lower() in i['name'].lower():
             counter += 1
+
             if i['logo_url'] != "":
-              coins.append([i['id'],i['name'],i['logo_url'],i['rank']])
+              ss_logo = i['logo_url']
             else:
-              coins.append([i['id'],i['name'],"/static/_images/_icons/pc_icon.png",i['rank']])
+              ss_logo = "/static/_images/_icons/ficon.png"
+            
+            if "rank" in i:
+              ss_rank = i['rank']
+            else:
+              ss_rank = "unranked"
+
+            coins.append([i['id'],i['name'],ss_logo,ss_rank])
             if counter == 5:
                 break
     return_coins = []
