@@ -133,3 +133,22 @@ function coinSearch(value) {
         $("#ss_dropdown").html(""); 
     }
 }
+
+function fetchdata(){
+    $.ajax({
+     url: 'index_data',
+     dataType: "json",
+     success: function(response){
+         let ap = ""
+        $.each(response, function(){
+            ap += response[0].price
+        });
+        $("#test_data").text(ap);
+     }
+    });
+   }
+
+$(document).ready(function() {
+    setInterval(fetchdata, 15000);
+});
+   

@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;1,300&display=swap');
 
+* {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
   }
-  
-  /* Track */
-  /* ::-webkit-scrollbar-track {
-    border: 0.5px solid var(--mint);
-  } */
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
