@@ -136,19 +136,20 @@ function coinSearch(value) {
 
 function fetchdata(){
     $.ajax({
-     url: 'index_data',
-     dataType: "json",
-     success: function(response){
-         let ap = ""
-        $.each(response, function(){
-            ap += response[0].price
-        });
-        $("#test_data").text(ap);
-     }
+        url: 'index_data',
+        dataType: "json",
+        success: function(response){
+            let ap = ""
+            $.each(response, function(){
+                ap += response[0].price
+            });
+            $("#test_data").text(ap);
+        }
     });
-   }
+    setTimeout(fetchdata, 11000);
+}
 
 $(document).ready(function() {
-    setInterval(fetchdata, 15000);
+  setTimeout(fetchdata, 11000);
 });
-   
+

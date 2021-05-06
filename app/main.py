@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request
 from data import DataPull, DataLists, coin_pull, data_req
+from twisted.internet import task, reactor
 import orjson
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
+
 #View
+
 
 @app.route('/')
 def index():
@@ -53,7 +56,7 @@ def search():
             else:
               ss_rank = "unranked"
 
-            coins.append([i['id'],i['name'],ss_logo,ss_rank])
+            coins.append([i['id'], i['name'], ss_logo, ss_rank])
             if counter == 5:
                 break
     return_coins = []
@@ -64,4 +67,8 @@ def search():
 
 @app.route("/index_data", methods=['GET', 'POST'])
 def index_data():
+    timeout = 11.0
+    l = task.LoopingCall(data_req)
+    l.start(timeout)
+    reactor.run()
     return data_req()

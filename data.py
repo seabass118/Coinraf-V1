@@ -1,5 +1,4 @@
 import requests
-import json
 import orjson
 
 coin_api = "https://api.nomics.com/v1/currencies/ticker?key=202c24a2628a42174eb7b568f21230fe"
@@ -7,6 +6,7 @@ coin_pull = requests.get(coin_api)
 
 
 def data_req():
+    print("hello")
     coin_pull2 = requests.get(coin_api)
     new_data = orjson.loads(coin_pull2.text)
     index_coins = []
