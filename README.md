@@ -1,3 +1,1 @@
-# coinraf
-crypto data platform
-/aur/last-modified/:packageName
+![alt text](http://app/static/_images/_github/cr_text.png)
