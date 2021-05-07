@@ -22,7 +22,6 @@ def data_search():
     for i in ticker_json:
         if str(input_text).lower() in i['id'].lower() or str(input_text).lower() in i['name'].lower():
             counter += 1
-
             if i['logo_url'] != "":
                 ss_logo = i['logo_url']
             else:
