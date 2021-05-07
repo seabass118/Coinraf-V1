@@ -140,16 +140,15 @@ function fetchdata(){
         dataType: "json",
         success: function(response){
             let ap = ""
-            $.each(response, function(){
-                ap += response[0].price
+            $.each(response, function(key, value){
+                console.log(response)
+                ap += "<div id='index_rank'>"+value.rank+"</div>"+' '+"<div id='index_price'>"+value.price+'</div>'
             });
-            $("#test_data").text(ap);
+            $("#test_data").html(ap);
         }
     });
-    setTimeout(fetchdata, 11000);
 }
 
-$(document).ready(function() {
-  setTimeout(fetchdata, 11000);
-});
+fetchdata();
+
 
