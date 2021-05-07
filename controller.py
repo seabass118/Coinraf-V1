@@ -1,45 +1,25 @@
-from flask import Flask, render_template, request
-from data import DataPull, DataLists
-import threading
+from flask import request
 import requests
 import orjson
+import threading
 
 
-app = Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+ticker_api = "https://api.nomics.com/v1/currencies/ticker?key=202c24a2628a42174eb7b568f21230fe"
+ticker_pull = requests.get(ticker_api)
+ticker_json = orjson.loads(ticker_pull.text)
 
 
-@app.route('/')
-def index():
-    return render_template('index.html', list_length=DataLists.list_length);
+def total_coins():
+    total_list =  [p['id'].lower() for p in ticker_json]
+    total_coins = len(total_list)
+    return total_coins
 
 
-@app.route('/crypto')
-def news():
-    return render_template('crypto.html')
-
-
-@app.route('/bsc')
-def bsc():
-    return render_template('BSC.html')
-  
-
-@app.route('/exchanges')
-def exchanges():
-    return render_template('exchanges.html');
-  
-
-@app.route('/discover')
-def data():
-    return render_template('discover.html')
-
-
-@app.route("/ss_search", methods=['GET', 'POST'])
-def search():
+def data_search():
     input_text = request.args['searchText']
     coins = []
     counter = 0
-    for i in DataPull.coin_output:
+    for i in ticker_json:
         if str(input_text).lower() in i['id'].lower() or str(input_text).lower() in i['name'].lower():
             counter += 1
 
@@ -62,11 +42,8 @@ def search():
     return orjson.dumps(return_coins)
 
 
-coin_api = "https://api.nomics.com/v1/currencies/ticker?key=202c24a2628a42174eb7b568f21230fe"
-
-
 def data_pull():
-    coin_pull2 = requests.get(coin_api)
+    coin_pull2 = requests.get(ticker_api)
     new_data = orjson.loads(coin_pull2.text)
     return new_data
 
@@ -88,12 +65,4 @@ def data_push():
     coin_output = []
     for i in index_coins:
         coin_output.append({"rank": i[0], "price": i[1]})
-    print(coin_output)
     return orjson.dumps(coin_output)
-
-
-@app.route("/index_data", methods=['GET', 'POST'])
-def index_data():
-    return data_push()
-
-
