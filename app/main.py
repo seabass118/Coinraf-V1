@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
-from data import DataPull, DataLists, coin_pull, data_req
+from data import DataPull, DataLists
 from twisted.internet import task, reactor
+import requests
+
 import orjson
 
 app = Flask(__name__)
@@ -64,11 +66,34 @@ def search():
         return_coins.append({'id': i[0], 'name': i[1], 'logo_url': i[2], 'rank': i[3]})
     return orjson.dumps(return_coins)
 
+coin_api = "https://api.nomics.com/v1/currencies/ticker?key=202c24a2628a42174eb7b568f21230fe"
+def data_req():
+    coin_pull2 = requests.get(coin_api)
+    new_data = orjson.loads(coin_pull2.text)
+    index_coins = []
+    counter = 0
+    for i in new_data:
+        counter += 1
+        if "price" in i:
+            index_coins.append([i['price']])
+        else:
+            index_coins.append(["price"])
+        if counter == 5:
+            break
+    coin_output = []
+    for i in index_coins:
+        coin_output.append({"price": i[0]})
+    return orjson.dumps(coin_output)
+
+
+timeout = 11.0
+l = task.LoopingCall(data_req)
+l.start(timeout)
+reactor.run()
+
 
 @app.route("/index_data", methods=['GET', 'POST'])
 def index_data():
-    timeout = 11.0
-    l = task.LoopingCall(data_req)
-    l.start(timeout)
-    reactor.run()
     return data_req()
+
+

@@ -140,16 +140,13 @@ function fetchdata(){
         dataType: "json",
         success: function(response){
             let ap = ""
-            $.each(response, function(){
-                ap += response[0].price
+            console.log(response)
+            $.each(response, function(key, value){
+                ap += value.price+" "
             });
             $("#test_data").text(ap);
         }
     });
-    setTimeout(fetchdata, 11000);
 }
 
-$(document).ready(function() {
-  setTimeout(fetchdata, 11000);
-});
-
+fetchdata()
