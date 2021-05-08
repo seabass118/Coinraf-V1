@@ -341,6 +341,7 @@ class HomeSearchbar extends HTMLElement {
                 display: flex;
                 align-items: center;
                 flex-direction: column;
+                padding-bottom: 40px;
             }
     
             #ss_input {
@@ -406,11 +407,11 @@ class HomeSearchbar extends HTMLElement {
                 }
     
                 #ss_input {
-                    width: calc(600px - 20px);
+                    width: calc(100% - 53px);
                 }
             
                 .ss_wrapper {
-                    width: auto;
+                    width: 600px;
                 }
             }
 

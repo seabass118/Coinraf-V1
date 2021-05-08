@@ -25,6 +25,7 @@
 
 .mobile_headline {
     display: block;
+	width: 100%;
 }
 
 #hh_banner_1 {
@@ -39,7 +40,7 @@
 
 #slider {
 	position: relative;
-	width: 100vw;
+	width: 100%;
 	overflow: hidden;
 }
 

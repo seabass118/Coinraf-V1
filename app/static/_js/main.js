@@ -141,10 +141,22 @@ function fetchdata(){
         success: function(response){
             let ap = ""
             $.each(response, function(key, value){
-                console.log(response)
-                ap += "<div id='index_rank'>"+value.rank+"</div>"+' '+"<div id='index_price'>"+value.price+'</div>'
+
+                if (value.change.includes("-")) {
+                    daily_change = "<div id='index_change' class='index_data_item' style='color: #ff5555;'>"+value.change+"%"+"</div>"
+                } else {
+                    daily_change = "<div id='index_change' class='index_data_item' style='color: #00c525;'>"+"+"+value.change+"%"+"</div>"
+                }
+
+                ap +=   "<li class='index_data_group'>"+
+                        "<img id='index_logo' class='index_data_item' src='"+value.logo_url+"'>"+
+                        "<div id='index_name' class='index_data_item'>"+value.name+"</div>"+
+                        "<div id='index_id' class='index_data_item text_cont index_id_cont'>"+value.id+"</div>"+
+                        daily_change+
+                        "<div id='index_price' class='index_data_item'>"+value.price+"</div>"+
+                        "</li>"
             });
-            $("#test_data").html(ap);
+            $(".h_data_panel").html("<ul id='index_data' style='padding-inline-start: 20px;'>"+ap+"</ul>");
         }
     });
 }
