@@ -149,11 +149,12 @@ function fetchdata(){
                 }
 
                 ap +=   "<li class='index_data_group'>"+
-                        "<div id='index_data_left'>"+
-                        "<div id='index_rank' class='index_data_item text_cont index_rank_cont' style='width: 35px; margin-right: 15px;'>"+"#"+value.rank+"</div>"+
+
                         "<img id='index_logo' class='index_data_item' src='"+value.logo_url+"'>"+
-                        "<div id='index_name' class='index_data_item'>"+value.name+"</div>"+
-                        "<div id='index_id' class='index_data_item text_cont index_id_cont'>"+value.id+"</div>"+
+                        "<div class='index_coin_info' style='width: 40%;'>"+
+                            "<div id='index_name' class='index_data_item'>"+value.name+"</div>"+
+                            "<div id='index_id' class='index_data_item text_cont index_id_cont'>"+value.id+"</div>"+
+                            "<div id='index_rank' class='index_data_item text_cont index_rank_cont' style='margin-right: 15px;'>"+"#"+value.rank+"</div>"+
                         "</div>"+
                         daily_change+
                         "<div id='index_price' class='index_data_item'>"+value.price+"</div>"+
