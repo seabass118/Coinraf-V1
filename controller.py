@@ -78,10 +78,14 @@ def data_push():
             coin_price = format_currency(i['price'])
         else:
             coin_price = "no price data"
-        index_coins.append([i['logo_url'], i['name'], i['id'], coin_percentage_change, coin_price])
+        if "rank" in i:
+            coin_rank = i['rank']
+        else:
+            coin_rank = ""
+        index_coins.append([i['logo_url'], i['name'], i['id'], coin_percentage_change, coin_price, coin_rank])
         if counter == 10:
             break
     coin_output = []
     for i in index_coins:
-        coin_output.append({"logo_url": i[0], "name": i[1], "id": i[2], "change": i[3], "price": i[4]})
+        coin_output.append({"logo_url": i[0], "name": i[1], "id": i[2], "change": i[3], "price": i[4], "rank": i[5]})
     return orjson.dumps(coin_output)

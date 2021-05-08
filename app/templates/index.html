@@ -44,6 +44,11 @@
             align-items: center;
         }
 
+        .index_data_group:hover {
+            opacity: 0.85;
+            cursor: pointer;
+        }
+
         #index_logo {
             width: 30px;
             height: 30px;
@@ -59,15 +64,36 @@
         }
 
         #index_change {
-            padding-left: 20px;
+            padding-left: 10px;
         }
 
         .index_id_cont {
+            height: 20px;
             background-color: var(--mint);
             padding: 1px 5px;
             border-radius: 4px;
             font-weight: 600;
             color: #000;
+        }
+
+        #index_data_left {
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .index_rank_cont {
+            height: 20px;
+            background-color: #cfcfcf;
+            padding: 1px 4px;
+            color: #000;
+            font-weight: 600;
+            border-radius: 4px;
+        }
+
+        #index_rank {
+            display: none;
         }
 
         @media only screen and (min-width: 650px) {
@@ -77,6 +103,14 @@
 
             #index_data {
                 font-size: 17px;
+            }
+
+            #index_rank {
+                display: flex;
+            }
+
+            #index_data_left {
+                width: 60%;
             }
         }
 

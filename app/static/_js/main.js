@@ -121,10 +121,10 @@ function coinSearch(value) {
         success: function(data){
             let res = ""
             $.each(data, function(key, value){
-                res += '<a href="'+value.id.toLowerCase()+'">'+'<div class="ss_item flex-center-vertical" style="height: 40px;"><span class="ss_system_muted flex-center-vertical">'+
+                res += "<div id='ss_d_wrapper' style='padding-bottom: 10px;'>"+'<a href="'+value.id.toLowerCase()+'">'+'<div class="ss_item flex-center-vertical" style="height: 40px;"><span class="ss_system_muted flex-center-vertical">'+
                 '<div id="ss_item_active" style="color: var(--mint);">'+'</div>'+
                 '<img src='+value.logo_url+' style="width: 20px; height: 20px; margin-right: 10px; border-radius: 10px;">'+'<div style="padding-right: 10px;">'+value.name+'</div>'+
-                '</span>'+'<div id="search_id_cont" class="text_cont">'+value.id+'</div>'+'<div class="search_rank text_cont" style="margin-left: auto; margin-right: 10px;">'+'#'+value.rank+'</div>'+'</div>'+'</a>';
+                '</span>'+'<div id="search_id_cont" class="text_cont">'+value.id+'</div>'+'<div class="search_rank text_cont" style="margin-left: auto; margin-right: 10px;">'+'#'+value.rank+'</div>'+'</div>'+'</a>'+'</div>';
             });
             $('#ss_dropdown').html(res);
         }
@@ -149,9 +149,12 @@ function fetchdata(){
                 }
 
                 ap +=   "<li class='index_data_group'>"+
+                        "<div id='index_data_left'>"+
+                        "<div id='index_rank' class='index_data_item text_cont index_rank_cont' style='width: 35px; margin-right: 15px;'>"+"#"+value.rank+"</div>"+
                         "<img id='index_logo' class='index_data_item' src='"+value.logo_url+"'>"+
                         "<div id='index_name' class='index_data_item'>"+value.name+"</div>"+
                         "<div id='index_id' class='index_data_item text_cont index_id_cont'>"+value.id+"</div>"+
+                        "</div>"+
                         daily_change+
                         "<div id='index_price' class='index_data_item'>"+value.price+"</div>"+
                         "</li>"

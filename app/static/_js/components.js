@@ -360,7 +360,6 @@ class HomeSearchbar extends HTMLElement {
                 position: relative;
                 top: 8px;
                 left: 8px;
-
             }
     
             #ss_dropdown {
