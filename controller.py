@@ -5,7 +5,7 @@ import threading
 import locale
 
 
-locale.setlocale(locale.LC_ALL, 'English_United States.1252')
+locale.setlocale(locale.LC_ALL, 'en_US.utf8')
 
 
 ticker_api = "https://api.nomics.com/v1/currencies/ticker?key=202c24a2628a42174eb7b568f21230fe"
