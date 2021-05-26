@@ -2,4 +2,4 @@
 
 Live Domain: https://coinraf.com/
 
-Test Server: https://coinraf2.herokuapp.com/
+Test Server/Live Demo: https://coinraf2.herokuapp.com/
