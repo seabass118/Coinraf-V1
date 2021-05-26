@@ -1,2 +1,2 @@
-set interval on server side
-then ajax interval on client side
+decrease thread loop timer
+convert to orjson globally
