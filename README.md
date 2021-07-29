@@ -2,6 +2,4 @@
 
 The V1 platform is now DEPRICATED
 
-Live Domain: https://www.coinraf.com/
-
-Test Server/Live Demo: https://coinraf2.herokuapp.com/
+Legacy Demo: https://coinraf2.herokuapp.com/
