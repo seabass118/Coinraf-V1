@@ -8,7 +8,7 @@ import locale
 locale.setlocale(locale.LC_ALL, 'en_US.utf8')
 
 
-ticker_api = "API LINK"
+ticker_api = "<API>"
 ticker_pull = requests.get(ticker_api)
 ticker_json = orjson.loads(ticker_pull.text)
 
